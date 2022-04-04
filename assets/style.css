@@ -51,10 +51,8 @@ main{
   }
 
 .container{
-    width: 800px;
-    margin: 2rem auto;
-}
-.cells {
+    width: 50%;
+    margin: auto;
     display: flex;
     flex-wrap: wrap;
-  }
+}
