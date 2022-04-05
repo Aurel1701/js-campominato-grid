@@ -1,5 +1,5 @@
 document.querySelector(".play").addEventListener("click", print);
-let arrayBomb = []
+
 function print(params) {
     document.querySelector('.container').innerHTML = ''
 
@@ -19,15 +19,19 @@ function print(params) {
         for (let y = 0; y < 16; y++) {
             
         }
+        Bomb(100)
+       
+        
 // difficoltà media
 
     } else if (difficoltà == 'medium') {
         for (let i = 1; i <= 81; i++) {
             document.querySelector('.container').insertAdjacentHTML('beforeend', ` <div class="cells">${i}  
             </div>`)
-            Bomb()
+            
 
         }
+        Bomb(81)
 
 // difficoltà alta
 
@@ -37,6 +41,8 @@ function print(params) {
             </div>`)
             Bomb()
         }
+        Bomb(49)
+        
 
     }
     colorBlue()
@@ -45,28 +51,21 @@ function print(params) {
 
 // genero numeri random
 
-function Bomb(params) {
-    let canpush = true;
-    let numberRandom = Math.floor(Math.random() * 100);
-    console.log(numberRandom);
-    for (let b = 0; b < arrayBomb.length; b++) {
-        if (numberRandom == arrayBomb[b]) {
-            numberRandom.addEventListener('click', function () {
-                this.style.backgroundColor = 'red'
-       
-               });
-               Bomb()
-            canpush = false
-        } else {
-            canpush = true;
-            colorBlue()
+function Bomb(numberCell) {
+    let arrayBomb = []
+
+    while (arrayBomb.length < 16) {
+        let numberRandom = Math.floor(Math.random() * (numberCell - 1 + 1)) + 1
+        if (!arrayBomb.includes(numberRandom)) {
+            arrayBomb.push(numberRandom)
+            
+
+    
         }
     }
-    if (canpush) {
-        arrayBomb.push(x)
-    }
+    console.log(arrayBomb.length);
     console.log(arrayBomb);
-    canpush = false;
+  
 }
 
 // colore le celle di blu al click
@@ -74,7 +73,6 @@ function Bomb(params) {
 function colorBlue() {
      const cells = document.querySelectorAll('.cells')
 
-     console.log(cells);
 
         for (let i = 0; i < cells.length; i++) {
 
@@ -87,3 +85,6 @@ function colorBlue() {
 
   }
 }
+
+
+
