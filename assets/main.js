@@ -6,6 +6,10 @@ function print(params) {
     let difficoltà = document.querySelector('#difficoltà').value
     console.log(difficoltà);
 
+// assegno le celle a seconda della difficoltà 
+
+// difficoltà facile
+
     if (difficoltà === 'easy') {
         for (let i = 1; i <= 100; i++) {
             document.querySelector('.container').insertAdjacentHTML('beforeend', ` <div class="cells">${i}  
@@ -13,9 +17,9 @@ function print(params) {
 
         }
         for (let y = 0; y < 16; y++) {
-            Bomb()
+            
         }
-
+// difficoltà media
 
     } else if (difficoltà == 'medium') {
         for (let i = 1; i <= 81; i++) {
@@ -24,6 +28,9 @@ function print(params) {
             Bomb()
 
         }
+
+// difficoltà alta
+
     } else if (difficoltà == 'hard') {
         for (let i = 1; i <= 49; i++) {
             document.querySelector('.container').insertAdjacentHTML('beforeend', ` <div class="cells">${i}  
@@ -36,15 +43,23 @@ function print(params) {
     
 }
 
+// genero numeri random
+
 function Bomb(params) {
     let canpush = true;
     let numberRandom = Math.floor(Math.random() * 100);
+    console.log(numberRandom);
     for (let b = 0; b < arrayBomb.length; b++) {
-        if (numberRandom === arrayBomb[b]) {
-            Bomb();
+        if (numberRandom == arrayBomb[b]) {
+            cellElement.addEventListener('click', function () {
+                this.style.backgroundColor = 'red'
+       
+               });
+               Bomb()
             canpush = false
         } else {
             canpush = true;
+            colorBlue()
         }
     }
     if (canpush) {
@@ -54,7 +69,7 @@ function Bomb(params) {
     canpush = false;
 }
 
-
+// colore le celle di blu al click
 
 function colorBlue() {
      const cells = document.querySelectorAll('.cells')
