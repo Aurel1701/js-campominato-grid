@@ -1,7 +1,7 @@
 document.querySelector(".play").addEventListener("click", print);
-document.querySelector('.cells').addEventListener('click', colorBlue)
 
 function print(params) {
+    document.querySelector('.container').innerHTML = ''
 
     let difficoltà = document.querySelector('#difficoltà').value
     console.log(difficoltà);
@@ -22,17 +22,34 @@ function print(params) {
             document.querySelector('.container').insertAdjacentHTML('beforeend', ` <div class="cells">${i}  
             </div>`)
         }
-
+        
+     colorBlue()
 
     }
-    
+
 
 
 }
 
+
+
 function colorBlue() {
 
-    document.querySelector('.cells').classList.add('blue')
+    const cells = document.querySelectorAll('.cell')
+
+    console.log(cells);
+
+    for (let i = 0; i < cells.length; i++ ) {
+
+        const cellElement = cells[i];
+
+
+        cellElement.addEventListener('click', function () {
+            this.style.backgroundColor = 'cornflowerblue'
+
+        });
+
+    }
 
 
 
