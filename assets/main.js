@@ -23,19 +23,19 @@ function print(params) {
             </div>`)
         }
         
-     colorBlue()
+       
 
     }
 
 
-
+    colorBlue()
 }
 
 
 
 function colorBlue() {
 
-    const cells = document.querySelectorAll('.cell')
+    const cells = document.querySelectorAll('.cells')
 
     console.log(cells);
 
@@ -54,3 +54,4 @@ function colorBlue() {
 
 
 }
+console.log(colorBlue());
