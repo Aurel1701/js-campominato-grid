@@ -21,6 +21,7 @@ function print(params) {
         for (let i = 1; i <= 81; i++) {
             document.querySelector('.container').insertAdjacentHTML('beforeend', ` <div class="cells">${i}  
             </div>`)
+            Bomb()
 
         }
     } else if (difficoltà == 'hard') {
@@ -30,55 +31,44 @@ function print(params) {
             Bomb()
         }
 
-
-
     }
-
-
     colorBlue()
+    
 }
 
 function Bomb(params) {
-    let x = Math.floor(Math.random() * 100);
-
-    do {
-        for (let b = 0; b < arrayBomb.length; b++) {
-            if (x === arrayBomb[b]) {
-                x = Math.floor(Math.random() * 100);
-            }
-
+    let canpush = true;
+    let numberRandom = Math.floor(Math.random() * 100);
+    for (let b = 0; b < arrayBomb.length; b++) {
+        if (numberRandom === arrayBomb[b]) {
+            Bomb();
+            canpush = false
+        } else {
+            canpush = true;
         }
-
-            } while (x !== arrayBomb[b]);
-        
-
-
-
-
-        arrayBomb.push(x)
-        console.log(arrayBomb);
     }
+    if (canpush) {
+        arrayBomb.push(x)
+    }
+    console.log(arrayBomb);
+    canpush = false;
+}
 
 
 
 function colorBlue() {
+     const cells = document.querySelectorAll('.cells')
 
-            const cells = document.querySelectorAll('.cells')
+     console.log(cells);
 
-            console.log(cells);
+        for (let i = 0; i < cells.length; i++) {
 
-            for (let i = 0; i < cells.length; i++) {
+        const cellElement = cells[i];
 
-                const cellElement = cells[i];
+        cellElement.addEventListener('click', function () {
+         this.style.backgroundColor = 'cornflowerblue'
 
+        });
 
-                cellElement.addEventListener('click', function () {
-                    this.style.backgroundColor = 'cornflowerblue'
-
-                });
-
-            }
-
-
-
-        }
+  }
+}
