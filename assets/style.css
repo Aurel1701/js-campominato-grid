@@ -23,6 +23,8 @@ header{
 }
 .difficoltà{
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .difficoltà h4{
     display: flex;
