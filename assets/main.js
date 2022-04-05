@@ -51,7 +51,7 @@ function Bomb(params) {
     console.log(numberRandom);
     for (let b = 0; b < arrayBomb.length; b++) {
         if (numberRandom == arrayBomb[b]) {
-            cellElement.addEventListener('click', function () {
+            numberRandom.addEventListener('click', function () {
                 this.style.backgroundColor = 'red'
        
                });
